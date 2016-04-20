@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+
+    <tlib-version>2.2</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>custom Taglib</short-name>
+    <uri>/custom</uri>
+    <display-name>custom Taglib</display-name>
+    <description><![CDATA[custom JSP Taglib]]></description>
+
+    <tag>
+        <name>pagelist</name>
+        <tag-class>com.shop.common.utils.taglib.PageListTag</tag-class>
+        <body-content>JSP</body-content>
+        <description><![CDATA[Page list tag help you split your records into lists]]></description>
+
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+
+            <description><![CDATA[Name of the form]]></description>
+
+        </attribute>
+        <attribute>
+            <name>condition</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description><![CDATA[Name of the form]]></description>
+        </attribute>
+        
+		<attribute>
+            <name>page</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description><![CDATA[Name of the form]]></description>
+        </attribute>
+    </tag>
+    
+    <tag>
+	  <name>loadCom</name>
+	  <description>资源文件加载标签</description>
+	  <tagclass>com.shop.common.utils.taglib.ResourceFileLoaderTag</tagclass>
+	  <bodycontent>empty</bodycontent>
+	  <attribute>  
+	   <name>components</name>
+	   <required>true</required>
+	  </attribute>
+	</tag>
+    
+</taglib>

@@ -1,0 +1,49 @@
+	.Node{
+		white-space: nowrap;
+	}
+	
+	.Node input{
+		vertical-align: middle;
+		height: 15px;
+	}
+	.Node span{
+		font-size:12px;
+		font-family:Verdana;
+		cursor:default;
+		margin-left:3px;
+		height:17px;
+		width:1px;
+	}
+	.Node span a{
+		padding:1 4;
+		width:100%;
+		height:100%;
+	}
+	.Node-unselect{
+		white-space: nowrap;
+		border:0px solid #EAEAEA;
+		background-color:transparent;
+		color:windowText;
+	}
+	.Node-selected{
+		white-space: nowrap;
+		border:1px solid windowText;
+		background-color:HighLight;
+		color:HighLightText;
+	}
+	.Node-unselect a{
+		text-decoration:none;
+	}
+	.Node-unselect a:hover{
+		text-decoration:underline;
+	}
+	.Node-selected a{
+		color:#FFFFFF;
+		text-decoration:none;
+		width:100%;
+		height:100%;
+	}
+	.Node-selected a:hover{
+		color:HighLightText;
+		text-decoration:underline;
+	}

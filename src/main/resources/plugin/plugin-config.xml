@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+JS组件注册配置
+	<component>:id 组件ID，唯一,name 组件名称
+	<file>
+		fileType:js|css 文件类型
+		filePath:文件在服务器上的路径
+		fileId:ID
+	ex.
+	使用时，通过标签引入如<custom:loadCom components="jquery,tab,datePicker"/>
+ -->
+<components>
+	
+	<component id="base-css" name="后台基础样式">
+		<file fileType="css" filePath="/assets/css/style.css?v=1.0"/>
+		<file fileType="css" filePath="/assets/css/select.css?v=1.0"/>
+	</component>
+	
+	<component id="base-js" name="后台基础js">
+		<file fileType="js" filePath="/assets/js/jquery.js"/>
+		<file fileType="js" filePath="/assets/js/common.js"/>
+		<file fileType="js" filePath="/assets/js/select-ui.min.js"/>
+	</component>
+	
+	<component id="datePicker" name="日期选择">
+		<file fileType="js" filePath="/assets/component/datepicker/WdatePicker.js"/>
+	</component>
+	
+	
+</components>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.shop.*">
+        <context:exclude-filter type="annotation" 
+        		expression="org.springframework.stereotype.Service" />           
+	</context:component-scan>
+	
+	<mvc:resources mapping="/assets/**" location="/assets/"/> 
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 异常处理 -->
+	<!-- <bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="NumberFormatException">/common/sys_error</prop>
+				<prop key="NullPointerException">/common/sys_error</prop>
+			</props>
+		</property>
+		
+		<property name="defaultErrorView" value="/common/sys_error" />
+		  
+    	<property name="exceptionAttribute" value="ex"></property>  
+	</bean> -->
+	
+	<!-- 过滤器 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<mvc:exclude-mapping path="/index" />
+			<mvc:exclude-mapping path="/admin/updateSecure" />
+			<mvc:exclude-mapping path="/assets/**" />
+			<bean class="com.pingan.admin.interceptor.AdminAuthorizeInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	-->
+	<bean
+	    class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	    <property name="webBindingInitializer">
+	        <bean class="com.shop.base.utils.MyDataBinding" />
+	    </property>
+	    <property name="messageConverters">
+	        <list>
+	            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+	            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	                <property name="writeAcceptCharset" value="false" />
+	                <property name="supportedMediaTypes">
+	                    <list>
+	                        <value>text/plain;charset=UTF-8</value>
+	                        <value>*/*;charset=UTF-8</value>
+	                    </list>
+	                </property>
+	            </bean>
+	            <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+	            <bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter" />
+	            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+	        </list>
+	    </property>
+	</bean>
+</beans>
